@@ -1,0 +1,57 @@
+div.toast-container {
+        position:fixed; top:55px; right:0; width:20vw; overflow:hidden; padding:10px 5px; min-width:275px;
+
+        > div {
+                background:$toast-bg; color:$toast-text-color; margin:0px calc(100% + 20px); padding:0px 15px; border-radius:3px;
+                width:calc(100% - 10px); box-shadow:4px 4px 7px 3px $card-shadow-color; animation-name:toast;
+                animation-duration:7s; overflow-y:hidden; height:0; display:block;
+
+                .secondary {color:$text-secondary-on-dark;}
+        }
+
+        > div.shown {
+                height:auto; padding:10px 15px; margin-top:5px; margin-bottom:5px;
+                animation-name: toast-entry; animation-duration: 0.7s; margin-left:0;
+        }
+
+        > div.hidden {
+                height:0; padding:0px 15px; margin-top:0; margin-bottom:0;
+                animation-name: toast-leave; animation-duration: 1.2s; margin-left: calc(100% + 20px);
+        }
+
+        input {
+                display:block; border-color:$input-line-dark-color; background:$textarea-dark-bg-color;
+                color:$text-on-dark-color; transition:background-color 0.3s, border-color 0.3s;
+
+                &:hover {background:$textarea-dark-bg-hover-color; border-color:$input-line-dark-color;}
+                &:active, &:focus:hover {border-color:$color-500;}
+        }
+
+        div.toast-buttons {
+                margin-bottom:-5px;
+
+                button {color:$toast-button-color;}
+                button:hover {color:$toast-button-color;}
+                button.colored {color:$color-500}
+                button.red {color:$red-dark}
+        }
+}
+
+@keyframes toast {
+        0% {margin-left:calc(100% + 20px); height:auto;padding:10px 15px; margin-top:5px; margin-bottom:5px}
+        10% {margin-left:0;}
+        85% {margin-left:0;}
+        95% {margin-left:calc(100% + 20px); height:auto; padding:10px 15px; margin-top:5px; margin-bottom:5px}
+        100% {height:0; padding:0px 15px; margin-top:0; margin-bottom:0}
+}
+
+@keyframes toast-entry {
+        0% {margin-left:calc(100% + 20px);}
+        100% {margin-left:0;}
+}
+
+@keyframes toast-leave {
+        0% {margin-left:0; height:auto; padding:10px 15px; margin-top:5px; margin-bottom:5px;}
+        66% {margin-left:calc(100% + 20px); height:auto; padding:10px 15px; margin-top:5px; margin-bottom:5px;}
+        100% {height:0; padding:0px 15px; margin-top:0; margin-bottom:0;}
+}

@@ -1,0 +1,46 @@
+main.login-container {
+        width:400px; margin-top:150px;
+
+        div.card-login {
+                display:grid; grid-template-columns:auto 1fr auto; grid-template-rows:auto auto auto;
+                grid-template-areas: "login-label login-input icon" "pass-label pass-input icon" "forgot forgot forgot";
+        }
+
+        @include media-small {
+                width:calc(100% - 10px); margin-top:100px;
+
+                div.card-login {width:calc(100% - 20px); max-width:400px; margin:0 auto;}
+        }
+}
+
+label.login-label {grid-area:login-label; margin-right:5px; align-self:center;}
+input.login-input {grid-area:login-input;}
+label.password-label {grid-area:pass-label; margin-right:5px; align-self:center;}
+input.password-input {grid-area:pass-input;}
+
+i.login-icon {
+        font-size:5em; margin-right:20px; margin-left:15px; color:$login-icon-color;
+        margin-top:-2px; grid-area:icon; margin-bottom:-20px;
+
+        @include media-xsmall {display:none;}
+}
+
+form.login-form {padding-top:4px;}
+button.login-button {float:right;}
+
+header.login-header {
+        font-size:2em; display:block; margin:15vh 5px 0 5px; text-align:center;
+
+        &.header-short {display:none;}
+
+        @include media-small {
+                margin-top:-60px;
+
+                &.header-long {display:none;}
+                &.header-short {display:block;}
+        }
+}
+
+div.forgot-password-container {margin-top:10px; margin-left:10ch; grid-area:forgot;}
+p.forgot-password-notice {grid-area:forgot;}
+.wrong-login-data {text-align:center; color:$red; margin-top:1em;}

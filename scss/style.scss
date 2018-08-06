@@ -1,0 +1,40 @@
+// Theme-independent colors
+$red:#f44336;
+$red-dark:#d32f2f;
+$green:#4caf50;
+
+$color-50: #e0f7fa;
+$color-100:#b2ebf2;
+$color-200:#80deea;
+$color-300:#4dd0e1;
+$color-400:#26c6da;
+$color-500:#00bcd4;
+$color-600:#00acc1;
+$color-700:#0097a7;
+$color-800:#00838f;
+$color-900:#006064;
+
+// Theme colors
+@import "colors";
+//@import "colors_dark"; // For dark theme
+
+@import "mixins";
+
+// Importing general tags styling
+@import "tags";
+@import "login";
+@import "misc";
+
+// Importing general layout elements
+@import "cards";
+@import "navbar";
+
+// Importing UI controls
+@import "buttons";
+@import "file_boxes";
+@import "inputs";
+
+// Importing rest of stylesheets
+@import "toasts";
+@import "tables";
+@import "phpinfo";

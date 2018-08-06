@@ -1,0 +1,32 @@
+table:not(.no-style) {
+    border-spacing:0; border-collapse:separate; margin-top:5px; max-width:100%;
+
+    td, th {
+        border-bottom:1px solid $table-row-border; margin:0; padding:5px 13px;
+
+        > button, > .button {padding-top:7px; padding-bottom:7px; margin:-2px 0;}
+    }
+    th {border-bottom:1px solid $color-700; font-weight:500;}
+
+    &.full-width {width:100%;}
+}
+
+td, th {
+    &.login-column,
+    &.send-mail-column,
+    &.exception-file-column {
+        @include media-small {display:none;}
+    }
+}
+
+th.sticky-row {position:-webkit-sticky; position:sticky; top:0; background:$card-bg-color; z-index:3}
+
+td.sticky-column, th.sticky-column {
+    position:-webkit-sticky; position:sticky; left:0; background:$card-bg-color; z-index:3; border-right:1px solid $color-700;
+}
+
+td.sticky-right-column, th.sticky-right-column {
+    position:-webkit-sticky; position:sticky; right:0; background:$card-bg-color; z-index:3; border-left:1px solid $color-700;
+}
+
+.sticky-row.sticky-right-column {z-index:5}

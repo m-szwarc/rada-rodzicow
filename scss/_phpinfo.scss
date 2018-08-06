@@ -1,0 +1,15 @@
+.phpinfo table {
+    @extend %card; width:100%; padding:0;
+
+    tr:last-child {
+        td, th {border-bottom:none;}
+    }
+}
+.phpinfo .center table {margin:1em auto; text-align:left;}
+.phpinfo td, .phpinfo th {font-size: 0.85em; vertical-align: baseline; padding: 4px 5px;}
+.phpinfo h2 {font-weight:500;}
+.phpinfo .p {text-align:left;}
+.phpinfo .e {width:300px; font-weight:500; border-right:1px solid $table-row-border;}
+.phpinfo .h {font-weight:bold;}
+.phpinfo .v {max-width:300px; overflow-x:auto; color:$text-secondary;}
+.phpinfo img {float: right; border: none;}

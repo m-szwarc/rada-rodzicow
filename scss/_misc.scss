@@ -1,0 +1,36 @@
+.left {float:left;}
+.center {text-align:center;}
+.right {float:right;}
+.justify {text-align:justify;}
+
+.block {display:block;}
+.hidden {display:none;}
+
+.secondary {color:$text-secondary}
+.red {color:$red;}
+.green {color:$green;}
+.cyan {color:$color-500;}
+
+.hide-on-small{ @include media-small {display:none;}}
+
+.overflow-y-container {max-height:100vh; overflow-y:auto; max-width:100%;}
+.overflow-x-container {max-width:100%; overflow-x:auto;}
+
+.admin-shine {animation-name:shine; animation-duration:4s; animation-iteration-count:infinite;}
+@keyframes shine {
+        0% {opacity:1}
+        10% {opacity:0.75}
+        17% {opacity:1}
+        100% {opacity:1}
+}
+
+.todo {animation-name:todo-blink; animation-duration:2.5s; animation-iteration-count:infinite;}
+@keyframes todo-blink {
+        0% {color:$text-color}
+        10% {color:$red}
+        50% {color:$text-color}
+        100% {color:$text-color}
+}
+
+div.answer-box {background:$file-link-background; border-radius:5px; width:auto; display:table; margin:5px 0; padding:1px;}
+div.copyright-note {color:$text-secondary;text-align:center;}

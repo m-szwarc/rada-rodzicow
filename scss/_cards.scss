@@ -1,0 +1,52 @@
+div.card, %card {
+    background:$card-bg-color; padding:10px; border-radius:5px; box-shadow:2px 2px 6px 0 $card-shadow-color; margin-bottom:15px;
+
+    .card-header {
+            border-bottom:1px solid $light-border-color; padding:10px 10px 0.15em 10px; margin:-10px -10px 10px -10px;
+
+            &.no-border {border:none;}
+            &.with-padding {padding-right:50px;}
+    }
+
+    big.card-header{font-size:1.35em; display:block;}
+
+    div.card-buttons, &.button-card {
+            border-top:1px solid $light-border-color; padding:0.15em 10px; margin:10px -10px -10px -10px;
+
+            @extend %clearfix;
+            button:not(:last-child) {margin-right:10px;}
+    }
+
+    &.button-card {margin:10px 0;}
+    &.flat-card {box-shadow:none;border:1px solid $secondary-border-color; margin:10px 0; border-radius:2px;}
+    &.wide-card {
+            margin-left:-10vw; margin-right:-10vw;
+
+            @include media-small {margin-left:0; margin-right:0;}
+    }
+
+    div.card-buttons:not(.only-inline), &.button-card {
+            @include media-small {
+                    button, a.button {display:block; text-align:center; width:100%; float:none; margin-right:10px;}
+            }
+    }
+
+    section:not(:last-of-type) {
+            border-bottom:1px solid $light-border-color; margin:0 -10px 10px -10px; padding:0 10px 10px 10px;
+
+            @extend %clearfix;
+    }
+
+    hr {border:none; border-top:1px solid $light-border-color; margin:10px -10px;}
+    ul:first-child {margin-top:0;}
+    ul:last-child {margin-bottom:0;}
+    div.question-images {margin:0 -10px;}
+    img.question-image {max-width:100%; margin:5px auto;display:block;}
+    span.added-time {
+            float:right; margin-top:-1em;
+
+            @include media-small {float:none; margin-top:0; display:block;}
+    }
+
+    @include media-small {border-radius:2px;}
+}

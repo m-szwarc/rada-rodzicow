@@ -1,0 +1,110 @@
+input[type=text], input[type=password], input[type=date], input[type=time], input[type=email] {
+        border:1px solid $input-line-color; border-radius:2px; margin:3px; background:$textarea-bg-color;
+        padding:3px 3px 1px 3px; transition:border-color 0.3s; font-size:1rem; font-family:inherit; color:$text-color;
+
+        &.group-begin {
+                border-bottom-right-radius:0; border-top-right-radius:0;
+                margin-right:0; border-right-color:$secondary-border-color;
+
+                &:hover {border-right-color:$secondary-border-color;}
+
+                @include media-small {
+                        border-radius:2px; margin-right:3px; border-right-color:$input-line-color;
+        
+                        &:hover {border-right-color:$secondary-border-color;}
+                }
+        }
+
+        &.group-end {
+                border-bottom-left-radius:0; border-top-left-radius:0;
+                margin-left:0; border-left:none;
+
+                @include media-small {border-radius:2px; margin-left:3px; border-left:1px solid $input-line-color;}
+        }
+
+        &:hover {border-color:$input-line-hover-color;}
+        &:focus, &:active {outline:none; border-color:$color-500;}
+        &:disabled {border-color:$input-line-disabled-color; color:$text-secondary;}
+}
+
+input[type=checkbox] {
+        &:not(.no-label) {display:none;}
+
+        + label {
+                color:$text-color; display:inline-block; cursor:pointer;
+
+                &::before {content:''; border:2px solid $color-800; width:1em; height:1em; display:inline-block;
+                        margin-left:0.3em; margin-right:10px; box-sizing:border-box;
+                        transition:transform 0.3s, width 0.3s, margin-left 0.3s, border-color 0.3s;}
+        }
+
+        &:not(:checked) {
+                + label:hover::before {background:$color-50;}
+        }
+
+        &:checked {
+                + label::before {border-color:transparent $color-500 $color-500 transparent; border-width:0 2px 2px 0;
+                        transform:rotate(40deg); width:0.6em; margin-left:0.7em;}
+                + label:hover::before {border-color:transparent $color-700 $color-700 transparent;}
+        }
+
+        &:disabled {
+                cursor: default;
+
+                + label, + label:hover {
+                        cursor:default;
+
+                        &::before {border-color:$text-secondary; opacity:0.75; cursor:default; background:transparent;}
+                }
+        }
+}
+
+input[type=file] {
+        width:0.1px; height:0.1px; opacity:0; overflow:hidden; position:absolute; z-index:-1;
+
+        + label {
+                @extend button;
+        }
+}
+
+textarea {
+        border:1px solid $textarea-border-color; border-radius:2px; resize:vertical; width:calc(100% - 10px); display:block;
+        transition:border-color 0.3s; padding:5px; background:$textarea-bg-color; color:$text-color; font-family:inherit;
+
+        &:hover {border-color: $textarea-hover-border-color;}
+        &:active, &:focus {border-color: $color-500; outline:none}
+}
+
+div.change-password-container {
+        display:grid; grid-template-columns:auto auto; grid-template-rows:auto auto auto;
+        grid-template-areas:"oldpass-label oldpass-input" "newpass-label newpass-input" "pwtpass-label pwtpass-input";
+        justify-content: start; align-items: baseline; grid-column-gap: 10px;
+
+        label.oldpass-label {grid-area:oldpass-label; justify-self:left;}
+        label.newpass-label {grid-area:newpass-label; justify-self:left;}
+        label.pwtpass-label {grid-area:pwtpass-label; justify-self:left;}
+        input.oldpass-input {grid-area:oldpass-input; min-width:15ch;}
+        input.newpass-input {grid-area:newpass-input; min-width:15ch;}
+        input.pwtpass-input {grid-area:pwtpass-input; min-width:15ch;}
+}
+
+div.new-user-container {
+        display:grid; grid-template-columns:auto auto; grid-template-rows:auto auto auto auto auto auto;
+        grid-template-areas:"first-name-label first-name-input" "last-name-label last-name-input" "newlogin-label newlogin-input"
+        "newpass-label newpass-input" "pwtpass-label pwtpass-input" "newemail-label newemail-input";
+        justify-content: start; align-items: baseline; grid-column-gap: 10px;
+
+        label.first-name-label {grid-area:first-name-label; justify-self:left;}
+        label.last-name-label {grid-area:last-name-label; justify-self:left;}
+        label.newlogin-label {grid-area:newlogin-label; justify-self:left;}
+        label.newpass-label {grid-area:newpass-label; justify-self:left;}
+        label.pwtpass-label {grid-area:pwtpass-label; justify-self:left;}
+        label.newemail-label {grid-area:newemail-label; justify-self:left;}
+
+        input.first-name-input {grid-area:first-name-input; min-width:15ch;}
+        input.last-name-input {grid-area:last-name-input; min-width:15ch;}
+        input.newlogin-input {grid-area:newlogin-input; min-width:15ch;}
+        input.newpass-input {grid-area:newpass-input; min-width:15ch;}
+        input.pwtpass-input {grid-area:pwtpass-input; min-width:15ch;}
+        input.newemail-input {grid-area:newemail-input; min-width:15ch;}
+}

@@ -1,0 +1,42 @@
+button, .button {
+        display:inline-block; padding:8px 14px; background:transparent; color:inherit; font-family:inherit;
+        text-decoration:none; border-radius:2px; font-weight:500; border:none; text-transform:uppercase;
+        cursor:pointer; transition:background-color 0.3s; min-width:60px; text-align:center; font-size:0.875em;
+        margin:2px; box-sizing:border-box; -webkit-tap-highlight-color:transparent;
+
+        &.flat {
+                color:$text-button;
+
+                &:not(:disabled) {
+                        &:hover {background:$button-flat-hover-background; color:$text-button;}
+                        &:active {background:$button-flat-active-background; color:$text-button;}
+                }
+
+                &:disabled {color:$button-flat-disabled-color; cursor:default;}
+
+                &.colored {
+                        color:$color-500;
+                        &:hover {color:$color-500;}
+                        &:active {color:$color-500;}
+
+                        &:disabled {color:transparentize($color-500, 0.4);}
+                }
+
+                &.red {
+                        color:$red;
+
+                        &:not(:disabled) {
+                                &:hover, &:active {color:$red}
+                        }
+                        &:disabled {color:transparentize($red, 0.4)}
+                }
+        }
+
+        &.small {min-width:40px;}
+
+        &:focus {outline:none;}
+
+        @include media-small {min-width:40px;}
+}
+
+h1 button {margin-top:0; margin-bottom:0; padding:5px 10px; min-width:0; line-height:100%;}
