@@ -26,6 +26,7 @@
             echo('    <a href="view_phpinfo" '.($path == 'view_phpinfo' ? 'class="active"' : '').'><i class="fa fa-cog fa-fw"></i> Konfiguracja serwera</a>');
             echo('    <a href="view_exceptions" '.($path == 'view_exceptions' ? 'class="active"' : '').'><i class="fa fa-bug fa-fw"></i> Zgłoszone błędy</a>');
             echo('    <a href="view_login_history" '.($path == 'view_login_history' ? 'class="active"' : '').'><i class="fa fa-users fa-fw"></i> Historia logowań</a>');
+            echo('    <a href="view_log" '.($path == 'view_log' ? 'class="active"' : '').'><i class="fa fa-list-alt fa-fw"></i> Log strony</a>');
             echo('</div></li>');
         }
         ?>

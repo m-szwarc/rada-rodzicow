@@ -1,3 +1,0 @@
-<?php
-Log::write('Test');
-?>

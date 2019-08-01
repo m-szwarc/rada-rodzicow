@@ -41,9 +41,9 @@ class LogInService{
     private static function saveState($login){
         $result = self::$lastLoginResult;
         switch($result){
-            case 1: Log::write('Successful login attempt ('.$login.')', LOG_LOGIN); break;
-            case 2: Log::write('Blocked login attempt ('.$login.')', LOG_LOGIN); break;
-            default: Log::write('Unsuccessful login attempt ('.$login.')', LOG_LOGIN); break;
+            case 1: Log::write('Udana próba logowania ('.$login.')', LOG_LOGIN); break;
+            case 2: Log::write('Zablokowana próba logowania ('.$login.')', LOG_LOGIN); break;
+            default: Log::write('Nieudana próba logowania ('.$login.')', LOG_LOGIN); break;
         }
         if(!DB::query('INSERT INTO '.TABLE_LOGIN_HISTORY." (id, datetime, login, ip, result) VALUES (NULL, FROM_UNIXTIME(".time()."), '$login', '".$_SERVER['REMOTE_ADDR']."', $result)")){
             try{
@@ -56,8 +56,8 @@ class LogInService{
 
     public static function getLoginHistory(){
         $entries = array();
-
         $result = DB::query('SELECT * FROM '.TABLE_LOGIN_HISTORY.' ORDER BY id DESC');
+        
         for($i = 0; $i < $result->num_rows; $i++){
             $row = $result->fetch_assoc();
             $entries[] = new LoginHistoryEntry($row['datetime'], $row['login'], $row['ip'], $row['result']);

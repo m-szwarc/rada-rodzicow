@@ -14,6 +14,7 @@ define('LOG_GENERIC', 0);
 define('LOG_LOGIN', 1);
 define('LOG_MANAGE_USERS', 2);
 define('LOG_ADMINISTRATION', 3);
+define('LOG_SESSION', 4);
 
 define('PRIV_LOGIN', (1 << 0));
 define('PRIV_ADD_QUESTION', (1 << 1));

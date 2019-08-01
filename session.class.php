@@ -12,13 +12,14 @@ class Session{
         $given_key = true;
 
         if(is_null($key)){
-        $given_key = false;
-        if(!isset($_COOKIE['SESSION'])){
-            self::$key = self::generateKey();
-        }else{
-            self::$key = $_COOKIE['SESSION'];
-        }
-        $key = self::$key;
+            $given_key = false;
+            if(!isset($_COOKIE['SESSION'])){
+                self::$key = self::generateKey();
+                Log::write('Wygenerowano nowy klucz sesji.', LOG_SESSION);
+            }else{
+                self::$key = $_COOKIE['SESSION'];
+            }
+            $key = self::$key;
         }else self::$key = $key;
 
         $result = DB::query('SELECT * FROM '.TABLE_SESSIONS." WHERE session_key='$key'");
@@ -29,25 +30,26 @@ class Session{
 
         // Utwórz nową sesję zamiast przestarzałej
         if(strtotime($result['expire_date']) < time()){
-        if($given_key){
-            throw new RRException('Podana sesja nie istnieje.');
-        }
+            if($given_key){
+                throw new RRException('Podana sesja nie istnieje.');
+            }
 
-        self::$key = self::generateKey();
-        $key = self::$key;
+            self::$key = self::generateKey();
+            $key = self::$key;
+            Log::write('Wygenerowano nowy klucz sesji zamiast przeterminowanego.', LOG_SESSION);
 
-        $result = DB::query('SELECT * FROM '.TABLE_SESSIONS." WHERE session_key='$key'");
-        if(!$result) throw new RRException('Nie można rozpocząć sesji: '.DB::getError());
+            $result = DB::query('SELECT * FROM '.TABLE_SESSIONS." WHERE session_key='$key'");
+            if(!$result) throw new RRException('Nie można rozpocząć sesji: '.DB::getError());
 
-        $result = $result->fetch_assoc();
-        self::$id = $result['id'];
+            $result = $result->fetch_assoc();
+            self::$id = $result['id'];
         }
 
         $result = DB::query('SELECT * FROM '.TABLE_SESSION_DATA.' WHERE session_id='.self::$id.' ORDER BY id ASC');
         if(!$result) throw new RRException('Nie można załadować danych sesji.');
         for($i=0; $i<$result->num_rows; $i++){
-        $row = $result->fetch_assoc();
-        self::$data[$row['key']] = $row['value'];
+            $row = $result->fetch_assoc();
+            self::$data[$row['key']] = $row['value'];
         } 
     }
 
@@ -86,9 +88,9 @@ class Session{
         $unique = false;
         $key = '';
         while(!$unique){
-        $key = self::getRandomKey();
-        $res = DB::query('SELECT * FROM '.TABLE_SESSIONS.' WHERE session_key = "'.$key.'"');
-        if($res->num_rows == 0) $unique = true;
+            $key = self::getRandomKey();
+            $res = DB::query('SELECT * FROM '.TABLE_SESSIONS.' WHERE session_key = "'.$key.'"');
+            if($res->num_rows == 0) $unique = true;
         }
         DB::query('INSERT INTO '.TABLE_SESSIONS.' (id, session_key, expire_date) VALUES (NULL, "'.$key.'", FROM_UNIXTIME('.(time()+3600).'))');
         setcookie('SESSION', $key);
