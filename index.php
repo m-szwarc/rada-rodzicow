@@ -1,6 +1,6 @@
 <?php
-error_reporting(0); //Debug: -1
-ini_set("display_errors", 0); //Debug: 1
+error_reporting(-1); //Debug: -1
+ini_set("display_errors", 1); //Debug: 1
 
 define('USE_HTTPS', false);
 if((!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "") && USE_HTTPS){

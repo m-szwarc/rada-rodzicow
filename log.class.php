@@ -7,7 +7,8 @@ class Log{
         $ip = $_SERVER['REMOTE_ADDR'];
         $sk_hash = hash('sha256', Session::getSessionKey());
 
-        DB::query('INSERT INTO '.TABLE_LOG.' (source, time, time_micros, ip, sessionkey_hash, message) VALUES ('.$source.', '.$time.', '.$time_micros.', "'.$ip.'", "'.$sk_hash.'", "'.$message.'")');
+        $res = DB::query('INSERT INTO '.TABLE_LOG.' (id, source, time, time_micros, ip, sessionkey_hash, message) VALUES (NULL, '.$source.', '.$time.', '.$time_micros.', "'.$ip.'", "'.$sk_hash.'", "'.$message.'")');
+        if(!$res) echo('Logging failed!');
     }
 }
 ?>

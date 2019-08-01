@@ -40,6 +40,11 @@ class LogInService{
 
     private static function saveState($login){
         $result = self::$lastLoginResult;
+        switch($result){
+            case 1: Log::write('Successful login attempt ('.$login.')', LOG_LOGIN); break;
+            case 2: Log::write('Blocked login attempt ('.$login.')', LOG_LOGIN); break;
+            default: Log::write('Unsuccessful login attempt ('.$login.')', LOG_LOGIN); break;
+        }
         if(!DB::query('INSERT INTO '.TABLE_LOGIN_HISTORY." (id, datetime, login, ip, result) VALUES (NULL, FROM_UNIXTIME(".time()."), '$login', '".$_SERVER['REMOTE_ADDR']."', $result)")){
             try{
                 throw new RRException(DB::getError());
