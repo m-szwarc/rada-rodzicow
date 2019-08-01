@@ -91,7 +91,6 @@ $email = Session::$current_user->email;
                                 for($i=0; $i<32; $i++){
                                     if(empty($priv_name[$i])) continue;
                                     if(!Session::$current_user->checkPriv((1<<$i) | PRIV_ADMIN)) continue;
-
                                     echo('<tr>');
                                     echo('<td>'.$priv_name[$i].'</td>');
                                     echo('<td><input type="checkbox" id="priv'.$i.'" '.($user->checkPriv(1<<$i) ? 'checked' : '').' onchange="updatePrivData('.$i.')" /><label for="priv'.$i.'"></label></td>');

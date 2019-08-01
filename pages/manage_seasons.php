@@ -1,6 +1,5 @@
 <?php
 if(!Session::$current_user->checkPriv(PRIV_MANAGE_ACCOUNTS)) return -1;
-
 $users = User::getAll();
 ?>
 <div class="card">

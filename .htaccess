@@ -1,6 +1,6 @@
 Options FollowSymLinks
 RewriteEngine On
-RewriteBase "/rr-new/"
+RewriteBase "/rada-rodzicow/"
 
 RewriteRule "^files/(.*)$" "get_file.php?file=$1" [END]
 RewriteRule "^api/([^./]*)(\?.*)?$" "api/$1.php" [END,QSA]

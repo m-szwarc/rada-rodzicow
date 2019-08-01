@@ -83,7 +83,7 @@ if((Session::$current_user->season & ~(1 << (Season::getCurrent() - 1))) == 0) r
                         continue;
                     }
                 }
-
+                
                 echo('<li><a href="question_list?season='.$i.'">'.Season::getSchoolyearForSeason($i).'</a></li>');
             }
         ?>
