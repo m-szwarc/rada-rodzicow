@@ -8,6 +8,12 @@ define('TABLE_SESSIONS', 'rr2_sessions');
 define('TABLE_SESSION_DATA', 'rr2_session_data');
 define('TABLE_EXCEPTIONS', 'rr2_exceptions');
 define('TABLE_LOGIN_HISTORY', 'rr2_login_history');
+define('TABLE_LOG', 'rr2_log');
+
+define('LOG_GENERIC', 0);
+define('LOG_LOGIN', 1);
+define('LOG_MANAGE_USERS', 2);
+define('LOG_ADMINISTRATION', 3);
 
 define('PRIV_LOGIN', (1 << 0));
 define('PRIV_ADD_QUESTION', (1 << 1));
