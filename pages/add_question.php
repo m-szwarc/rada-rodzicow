@@ -17,6 +17,7 @@ if(isset($_POST['text'])){
         
         $files = reArrayFiles($_FILES['files']);
         File::upload($files, $question_id);
+        Log::write('Dodano pytanie');
 
         echo('<div class="card">');
         echo('  <h1 class="card-header"><i class="fa fa-check-circle green"></i> Dodano pytanie</h1>');

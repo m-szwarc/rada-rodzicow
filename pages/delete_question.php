@@ -30,6 +30,7 @@ if($question->author->id != Session::$current_user->id){
 
 try{
     Question::delete($question->id);
+    Log::write('Usunięto pytanie');
 
     echo('<div class="card">');
     echo('  <h1 class="card-header"><i class="fa fa-check-circle green"></i> Usunięto pytanie</h1>');

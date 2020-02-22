@@ -1,5 +1,6 @@
 <?php
 if(!Session::$current_user->checkPriv(PRIV_SITE_CONFIG)) return -1;
+Log::write('Wyświetlono listę błędów', LOG_ADMINISTRATION);
 
 $exceptions = RRException::getAll();
 ?>

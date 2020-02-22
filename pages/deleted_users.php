@@ -1,5 +1,6 @@
 <?php
 if(!Session::$current_user->checkPriv(PRIV_MANAGE_ACCOUNTS)) return -1;
+Log::write('Wyświetlono listę usuniętych użytkowników', LOG_MANAGE_USERS);
 
 $users = User::getDeleted();
 ?>

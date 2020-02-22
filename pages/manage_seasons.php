@@ -1,5 +1,7 @@
 <?php
 if(!Session::$current_user->checkPriv(PRIV_MANAGE_ACCOUNTS)) return -1;
+Log::write('Wyświetlono stronę zarządzania kadencjami', LOG_MANAGE_USERS);
+
 $users = User::getAll();
 ?>
 <div class="card">

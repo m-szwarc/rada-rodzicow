@@ -1,5 +1,6 @@
 <?php
 if(!Session::$current_user->checkPriv(PRIV_MANAGE_ACCOUNTS)) return -1;
+Log::write('Wyświetlono stronę zarządzania użytkownikiem', LOG_MANAGE_USERS);
 
 if(!isset($_GET['user_id'])){
     echo('<div class="card">');

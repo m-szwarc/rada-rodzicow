@@ -101,7 +101,10 @@ if(!file_exists('pages/'.$path.'.php')) $path = 'question_list';
 
             try{
                 $result = include('pages/'.$path.'.php');
-                if($result == -1 || $result === false) include('pages/question_list.php');
+                if($result == -1 || $result === false){
+                    if($result == -1) Log::write('Zablokowany nieautoryzowany dostęp do strony '.$path.'.');
+                    include('pages/question_list.php');
+                }
             }catch(Exception $e){
                 echo('<div class="card">');
                 echo('  <h1 class="card-header"><i class="fa fa-times-circle red"></i> Wystąpił nieznany błąd</h1>');

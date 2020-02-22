@@ -1,5 +1,6 @@
 <?php
 if(!Session::$current_user->checkPriv(PRIV_MANAGE_ACCOUNTS)) return -1;
+Log::write('Wyświetlono formularz tworzenia użytkownika', LOG_MANAGE_USERS);
 
 $first_name = isset($_POST['first_name']) ? $_POST['first_name'] : '';
 $last_name = isset($_POST['last_name']) ? $_POST['last_name'] : '';
@@ -35,6 +36,7 @@ if(!empty($first_name) && !empty($last_name) && !empty($login) && !empty($pass) 
 
     try{
         User::create($first_name, $last_name, $login, $pass, !empty($email) ? $email : null);
+        Log::write('Utworzono użytkownika', LOG_MANAGE_USERS);
         echo('<div class="card">');
         echo('  <h1 class="card-header"><i class="fa fa-check-circle green"></i> Dodano użytkownika</h1>');
         echo('  Użytkownik został dodany pomyślnie.');
